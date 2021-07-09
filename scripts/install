@@ -162,7 +162,9 @@ ynh_script_progression --message="Building Yarn dependencies..."
 
 pushd "$final_path"
 	ynh_use_nodejs
-	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NOCLIENT=true yarn install --production --pure-lockfile
+	# enable yarn v2 in order to avoid timeout errors
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn set version berry
+	ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH yarn install
 popd
 
 #=================================================
