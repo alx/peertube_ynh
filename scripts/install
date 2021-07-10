@@ -210,11 +210,11 @@ ynh_systemd_action --service_name=$app --action="start" --log_path="systemd" --l
 #=================================================
 # CHANGE PEERTUBE ADMIN PASSWORD
 #=================================================
-ynh_script_progression --message="Changing PeerTube admin password..."
-
-pushd "$final_path"
-	echo $admin_pass | ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_CONFIG_DIR="$final_path/config" NODE_ENV=production $ynh_npm run reset-password -- -u root
-popd
+# ynh_script_progression --message="Changing PeerTube admin password..."
+#
+# pushd "$final_path"
+# 	echo $admin_pass | ynh_exec_warn_less sudo -u $app env $ynh_node_load_PATH NODE_CONFIG_DIR="$final_path/config" NODE_ENV=production $ynh_npm run reset-password -- -u root
+# popd
 
 #=================================================
 # STOP SYSTEMD SERVICE
